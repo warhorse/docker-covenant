@@ -1,7 +1,7 @@
 # [warhorse/covenant](https://github.com/warhorse/docker-covenant)
 [![GitHub Release](https://img.shields.io/github/release/warhorse/docker-covenant.svg?style=flat-square&color=E68523)](https://github.com/linuxserver/docker-radarr/releases)
-[![MicroBadger Layers](https://img.shields.io/microbadger/layers/warhorse/covenant.svg?style=flat-square&color=E68523)](https://microbadger.com/images/linuxserver/radarr "Get your own version badge on microbadger.com")
-[![MicroBadger Size](https://img.shields.io/microbadger/image-size/warhorse/covenant.svg?style=flat-square&color=E68523)](https://microbadger.com/images/linuxserver/radarr "Get your own version badge on microbadger.com")
+[![MicroBadger Layers](https://img.shields.io/microbadger/layers/warhorse/covenant.svg?style=flat-square&color=E68523)](https://microbadger.com/images/warhorse/covenant "Get your own version badge on microbadger.com")
+[![MicroBadger Size](https://img.shields.io/microbadger/image-size/warhorse/covenant.svg?style=flat-square&color=E68523)](https://microbadger.com/images/warhorse/covenant "Get your own version badge on microbadger.com")
 [![Docker Pulls](https://img.shields.io/docker/pulls/warhorse/covenant.svg?style=flat-square&color=E68523)](https://hub.docker.com/r/warhorse/covenant)
 [![Docker Stars](https://img.shields.io/docker/stars/warhorse/covenant.svg?style=flat-square&color=E68523)](https://hub.docker.com/r/warhorse/covenant)
 
@@ -56,7 +56,9 @@ Container images are configured using parameters passed at runtime (such as thos
 
 | Parameter | Function |
 | :----: | --- |
-| `-p 7878` | The port for the Covenant Admin webinterface |
+| `-p 7443` | The port for the Covenant Admin web interface |
+| `-p 80` | The port for HTTP C2 traffic |
+| `-p 443` | The port for HTTPS C2 traffic |
 | `-e TZ=Europe/London` | Specify a timezone to use EG Europe/London|
 | `-v /app/Data` | covenant configs |
 
