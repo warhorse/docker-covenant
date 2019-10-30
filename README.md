@@ -1,5 +1,5 @@
 # [warhorse/covenant](https://github.com/warhorse/docker-covenant)
-[![GitHub Release](https://img.shields.io/github/release/warhorse/docker-covenant.svg?style=flat-square&color=E68523)](https://github.com/linuxserver/docker-radarr/releases)
+[![GitHub Release](https://img.shields.io/github/release/warhorse/docker-covenant.svg?style=flat-square&color=E68523)](https://github.com/warhorse/docker-covenant/releases)
 [![MicroBadger Layers](https://img.shields.io/microbadger/layers/warhorse/covenant.svg?style=flat-square&color=E68523)](https://microbadger.com/images/warhorse/covenant "Get your own version badge on microbadger.com")
 [![MicroBadger Size](https://img.shields.io/microbadger/image-size/warhorse/covenant.svg?style=flat-square&color=E68523)](https://microbadger.com/images/warhorse/covenant "Get your own version badge on microbadger.com")
 [![Docker Pulls](https://img.shields.io/docker/pulls/warhorse/covenant.svg?style=flat-square&color=E68523)](https://hub.docker.com/r/warhorse/covenant)
