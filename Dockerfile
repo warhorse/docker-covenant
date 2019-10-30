@@ -21,10 +21,10 @@ STOPSIGNAL SIGKILL
 LABEL org.opencontainers.image.ref.name="warhorse/covenant" \
       org.opencontainers.image.created=$BUILD_RFC3339 \
       org.opencontainers.image.authors="warhorse <warhorse@thedarkcloud.net>" \
-      org.opencontainers.image.documentation="https://github.com/warhorse/docker-covenant/README.md" \
+      org.opencontainers.image.documentation="https://github.com/war-horse/docker-covenant/README.md" \
       org.opencontainers.image.description="Covenant Docker Build" \
       org.opencontainers.image.licenses="GPLv3" \
-      org.opencontainers.image.source="https://github.com/warhorse/docker-covenant" \
+      org.opencontainers.image.source="https://github.com/war-horse/docker-covenant" \
       org.opencontainers.image.revision=$COMMIT \
       org.opencontainers.image.version=$VERSION \
       org.opencontainers.image.url="https://hub.docker.com/r/warhorse/covenant/"
