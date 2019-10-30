@@ -1,41 +1,88 @@
-# Docker Hub Hooks Example
+# [warhorse/covenant](https://github.com/warhorse/docker-covenant)
+[![GitHub Release](https://img.shields.io/github/release/warhorse/docker-covenant.svg?style=flat-square&color=E68523)](https://github.com/linuxserver/docker-radarr/releases)
+[![MicroBadger Layers](https://img.shields.io/microbadger/layers/warhorse/covenant.svg?style=flat-square&color=E68523)](https://microbadger.com/images/linuxserver/radarr "Get your own version badge on microbadger.com")
+[![MicroBadger Size](https://img.shields.io/microbadger/image-size/warhorse/covenant.svg?style=flat-square&color=E68523)](https://microbadger.com/images/linuxserver/radarr "Get your own version badge on microbadger.com")
+[![Docker Pulls](https://img.shields.io/docker/pulls/warhorse/covenant.svg?style=flat-square&color=E68523)](https://hub.docker.com/r/warhorse/covenant)
+[![Docker Stars](https://img.shields.io/docker/stars/warhorse/covenant.svg?style=flat-square&color=E68523)](https://hub.docker.com/r/warhorse/covenant)
 
-The scripts in this respository are intended to provide auto-updating builds based on tags.
+[Covenant](https://github.com/cobbr/Covenant) - A collaborative .NET C2 framework for red teamers.
 
-## Introduction
 
-The key words “MUST”, “MUST NOT”, “REQUIRED”, “SHALL”, “SHALL NOT”, “SHOULD”, “SHOULD NOT”, “RECOMMENDED”, “MAY”, and “OPTIONAL” in this document are to be interpreted as described in [RFC 2119](http://tools.ietf.org/html/rfc2119).
+![Covenant](https://raw.githubusercontent.com/wiki/cobbr/Covenant/covenant.png)
 
-## Preamble
+## Usage
 
-For best practices on Docker Hub, when you push a patch version of your container, you should be updating the major and minor versions of your release to point to this new build.  Additionally, when pushing a new minor release, you should be updating the major container version.
+Here are some example snippets to help you get started creating a container.
 
-Grabbing `:1` of your container, should always pull the most up-to-date release, be it v1.3.1 or v1.99.99.  If you wanted v1.0.0 specifically, best practices means you should grab `:1.0.0`. If someone always wants the latest version, they can download `:latest`.  However, if they always want v1.2 and all patches of v1.2 (e.g. v1.2.4, v1.2.219), but never v1.3, they can download `:1.2`.
+### docker
 
-Example:
+```
+docker create \
+  --name=covenant \
+  -e TZ=Europe/London \
+  -p 7443:7443 \
+  -p 443:443 \
+  -p 80:80 \
+  -v <path to data>:/app/Data \
+  --restart unless-stopped \
+  warhorse/covenant
+```
 
-When you tag and push v1.2.3 of your repository, the scripts will create a new tag, `:1.2.3`, for your container.  It will also automatically update `:1.2` and `:1` for you.  Keeping all releases up to date.
+### docker-compose
 
-## How To Use
+Compatible with docker-compose v2 schemas.
 
-**Click "Use This Template" on Github, do NOT "Fork".**
+```
+---
+version: "2"
+services:
+  covenant:
+    image: warhorse/covenant
+    container_name: covenant
+    environment:
+      - TZ=Europe/London
+    volumes:
+      - <path to data>:/app/Data
+    ports:
+      - 7443:7443
+      - 443:443
+      - 80:80
+    restart: unless-stopped
+```
 
-In order to use these scripts, you **MUST** tag your commits following [semantic version standards](https://semver.org).
+## Parameters
 
-The format is "vMAJOR.MINOR.PATCH" (please note the lowercase "v").  Examples: `v0.0.4`, `v1.0.0`, `v2.0.103`.
+Container images are configured using parameters passed at runtime (such as those above). These parameters are separated by a colon and indicate `<external>:<internal>` respectively. For example, `-p 8080:80` would expose port `80` from inside the container to be accessible from the host's IP on port `8080` outside the container.
 
-If you wish to use lightweight tags within git, it is recommended to push your tag **PRIOR** to pushing the commit so that Docker Hub does not label your build incorrectly.  Yes, there is a delay prior to Docker Hub building your release, however, you should not rely on it.
+| Parameter | Function |
+| :----: | --- |
+| `-p 7878` | The port for the Covenant Admin webinterface |
+| `-e TZ=Europe/London` | Specify a timezone to use EG Europe/London|
+| `-v /app/Data` | covenant configs |
 
-To properly version your releases, increment the:
+&nbsp;
+## Application Setup
 
-1. MAJOR version when you make incompatible API changes,
-1. MINOR version when you add functionality in a backwards-compatible manner, and
-1. PATCH version when you make backwards-compatible bug fixes.
+Access the webui at `<your-ip>:7443`, for more information check out [Covenant](https://github.com/cobbr/Covenant).
 
-Additional labels for pre-release and build metadata are available as extensions to the MAJOR.MINOR.PATCH format.  Examples: `v1.0.0-rc10`, `v1.9.0-alpha`
 
-### Shallow Pulls
 
-When Docker Cloud pulls a branch from a source code repository, it performs a shallow clone (only the tip of the specified branch). This has the advantage of minimizing the amount of data transfer necessary from the repository and speeding up the build because it pulls only the minimal code necessary.
+## Support Info
 
-Because of this, in order to get the tags, a full "unshallow" clone needs to be fetched.  This can potentially take a very long time and transfers a lot of data depending on your repository.  It is not recommended to use these scripts on a large repository.  Sorry.
+* Shell access whilst the container is running: `docker exec -it covenant /bin/bash`
+* To monitor the logs of the container in realtime: `docker logs -f covenant`
+
+## Building locally
+
+If you want to make local modifications to these images for development purposes or just to customize the logic:
+```
+git clone https://github.com/warhorse/docker-covenant.git
+cd docker-covenant
+docker build \
+  --no-cache \
+  --pull \
+  -t warhorse/covenant:latest .
+```
+## Versions
+
+* **10.30.19:** - First Push
