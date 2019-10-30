@@ -1,7 +1,7 @@
 .PHONY: build all
 .DEFAULT_GOAL := all
 
-IMAGE?=jnovack/dockerhub-hooks
+IMAGE?=warhorse/covenant
 
 all: build
 
